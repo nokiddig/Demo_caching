@@ -13,11 +13,13 @@ cache.init_app(app)
 
 @app.route('/')
 @cache.cached(timeout=100)  # Cache trang này trong 60 giây
-def hello():
+def xinchao_thegioi():
+    # Load data
+    print("Loading...")
+    sleep(5)
+    
     home_page = 'home.html'
     if os.path.exists(rf"./templates/{home_page}"):
-        # Load data
-        sleep(5)
         return render_template(home_page)
     else:
         return "File not found!", 403
